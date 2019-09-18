@@ -12,9 +12,9 @@ function find() {
         .select('id', 'username', 'department')
 };
 
-function findBy(id) {
+function findBy(filter) {
     return db('users')
-        .where(id)
+        .where(filter)
 };
 
 function add(newUser) {
