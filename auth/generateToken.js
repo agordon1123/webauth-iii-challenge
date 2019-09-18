@@ -10,5 +10,5 @@ module.exports = user => {
         expiresIn: '1h'
     };
 
-    return jwt.sign(payload, secret.jwtSecret, options)
+    return jwt.sign(payload, secret.jwtSecret, options);
 };
