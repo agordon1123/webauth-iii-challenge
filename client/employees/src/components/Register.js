@@ -25,7 +25,7 @@ const Signup = props => {
             .post('http://localhost:5400/api/register', newUser)
             .then(res => {
                 localStorage.setItem('token', res.data.token);
-                // props.history.push('/dashboard')
+                props.history.push('/dashboard');
             })
             .catch(err => console.log(err));
     };

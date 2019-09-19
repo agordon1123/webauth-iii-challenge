@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Input } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 import Axios from 'axios';
 
 const Login = props => {
@@ -24,7 +25,7 @@ const Login = props => {
             .post('http://localhost:5400/api/login', credentials)
             .then(res => {
                 localStorage.setItem('token', res.data.token);
-                // props.history.push('/dashboard')
+                props.history.push('/dashboard')
                 console.log(res);
             })
             .catch(err => console.log(err));
@@ -33,6 +34,15 @@ const Login = props => {
     return (
         <div className='login form'>
             <h1>Log In</h1>
+
+            <span className='register-container'>
+                New here?
+                <Link to='/register'>Register</Link>
+            </span>
+
+            <br />
+            <br />
+
             <form onSubmit={handleSubmit}>
                 <p>Username:</p>
                 <Input

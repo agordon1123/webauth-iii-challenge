@@ -1,17 +1,17 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-const logout = () => {
-    localStorage.removeItem('token');
-}
-
-const Nav = () => {
+const Nav = props => {
+    const logout = () => {
+        localStorage.removeItem('token');
+        props.history.push('/');
+    }
+    
     return (
         <div className='nav'>
-            <p>Hello from Nav</p>
-            <NavLink to='/dashboard'>Home</NavLink>
-            <NavLink to='/login'>Login</NavLink>
-            <NavLink to='/' onClick={() => logout()} >Logout</NavLink>
+            <NavLink className='nav-link' to='/dashboard'>Home</NavLink>
+            <NavLink className='nav-link' to='/login'>Login</NavLink>
+            <NavLink className='nav-link' to='/' onClick={() => logout()} >Logout</NavLink>
         </div>
     );
 };
