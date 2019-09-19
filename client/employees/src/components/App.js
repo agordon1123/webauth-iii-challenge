@@ -8,6 +8,7 @@ import Landing from './Landing';
 import Login from './Login';
 import Register from './Register';
 import Dashboard from './Dashboard';
+import PrivateRoute from '../components/PrivateRoute';
 
 const App = () => {
   return (
@@ -16,7 +17,7 @@ const App = () => {
       <Route exact path='/' render={props => <Landing {...props} />} />
       <Route path='/login' render={props => <Login {...props} />} />
       <Route path='/register' render={props => <Register {...props} />} />
-      <Route path='/dashboard' render={props => <Dashboard {...props} />} />
+      <PrivateRoute path='/dashboard' component={Dashboard} />
     </div>
   );
 }

@@ -2,14 +2,12 @@ import React from 'react';
 import { Card } from 'semantic-ui-react';
 
 const Friend = ({ props }) => {
-    console.log(props);
     return (
         <div>
             <Card.Group>
                 <Card>
                     <Card.Content>
                         <Card.Header content={props.username} />
-                        {console.log(props.username)}
                         <Card.Meta content={props.department} />
                         <Card.Description content={`${props.username} is a ${props.department} living in New York.`} />
                     </Card.Content>

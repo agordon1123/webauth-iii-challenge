@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Input, Menu, Container, Header, Message } from 'semantic-ui-react';
-import Axios from 'axios';
+import { axiosWithAuth } from '../utilities/axiosWithAuth';
 import Friend from './Friend';
 
 const Dashboard = props => {
     const [employees, setEmployees] = useState([]);
     const [activeTab, setActiveTab] = useState({ activeItem: 'News' })
-    console.log(employees);
 
     useEffect(() => {
-        Axios
+        axiosWithAuth()
             .get('http://localhost:5400/api/users')
             .then(res => setEmployees(res.data))
             .catch(err => console.log(err));
