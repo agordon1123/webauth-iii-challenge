@@ -43,7 +43,7 @@ const Signup = props => {
 
                 <p>Create a password:</p>
                 <Input
-                    type='text'
+                    type='password'
                     name='password'
                     onChange={handleChange}
                 />
