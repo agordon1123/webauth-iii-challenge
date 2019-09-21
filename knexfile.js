@@ -6,6 +6,7 @@ module.exports = {
       filename: './data/users-auth-iii.db3'
     },
     useNullAsDefault: true,
+    migrations: './migrations'
   },
 
   production: {
