@@ -9,7 +9,7 @@ const Dashboard = props => {
 
     useEffect(() => {
         axiosWithAuth()
-            .get('http://localhost:5400/api/users')
+            .get('https://opti-ployment.herokuapp.com/api/users')
             .then(res => setEmployees(res.data))
             .catch(err => console.log(err));
     }, [])

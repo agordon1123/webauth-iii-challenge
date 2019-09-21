@@ -22,7 +22,7 @@ const Login = props => {
     const handleSubmit = e => {
         e.preventDefault();
         Axios
-            .post('http://localhost:5400/api/login', credentials)
+            .post('https://opti-ployment.herokuapp.com/api/login', credentials)
             .then(res => {
                 localStorage.setItem('token', res.data.token);
                 props.history.push('/dashboard')
