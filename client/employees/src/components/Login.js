@@ -54,7 +54,7 @@ const Login = props => {
 
                 <p>Password:</p>
                 <Input
-                    type='text'
+                    type='password'
                     name='password'
                     onChange={handleChange}
                     className='ui input'
