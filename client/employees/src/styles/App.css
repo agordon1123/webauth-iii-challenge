@@ -47,3 +47,8 @@
 .dashboard-news-text {
   text-align: left;
 }
+
+.friend {
+  display: inline-flex;
+  margin: 20px;
+}
