@@ -22,7 +22,7 @@ const Signup = props => {
     const handleSubmit = e => {
         e.preventDefault();
         Axios
-            .post('http://localhost:5400/api/register', newUser)
+            .post('https://opti-ployment.herokuapp.com/api/register', newUser)
             .then(res => {
                 localStorage.setItem('token', res.data.token);
                 props.history.push('/dashboard');
@@ -43,7 +43,7 @@ const Signup = props => {
 
                 <p>Create a password:</p>
                 <Input
-                    type='text'
+                    type='password'
                     name='password'
                     onChange={handleChange}
                 />
