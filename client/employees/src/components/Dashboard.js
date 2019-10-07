@@ -4,15 +4,16 @@ import { axiosWithAuth } from '../utilities/axiosWithAuth';
 import Friend from './Friend';
 
 const Dashboard = props => {
+    console.log(props);
     const [employees, setEmployees] = useState([]);
-    const [activeTab, setActiveTab] = useState({ activeItem: 'News' })
+    const [activeTab, setActiveTab] = useState({ activeItem: 'News' });
 
     useEffect(() => {
         axiosWithAuth()
             .get('https://opti-ployment.herokuapp.com/api/users')
             .then(res => setEmployees(res.data))
             .catch(err => console.log(err));
-    }, [])
+    }, []);
 
     const handleItemClick = (e, { name }) => setActiveTab({ activeItem: name });
     

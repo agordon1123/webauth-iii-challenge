@@ -11,7 +11,7 @@ const Nav = props => {
         <div className='nav'>
             <NavLink className='nav-link' to='/dashboard'>Home</NavLink>
             <NavLink className='nav-link' to='/login'>Login</NavLink>
-            <NavLink className='nav-link' to='/' onClick={() => logout()} >Logout</NavLink>
+            <NavLink className='nav-link' to='/' onClick={() => props.setLoggedInUser({}).then(() => logout())} >Logout</NavLink>
         </div>
     );
 };

@@ -25,6 +25,7 @@ const Login = props => {
             .post('https://opti-ployment.herokuapp.com/api/login', credentials)
             .then(res => {
                 localStorage.setItem('token', res.data.token);
+                props.setLoggedInUser(res.data.user);
                 props.history.push('/dashboard')
                 console.log(res);
             })

@@ -25,6 +25,7 @@ const Signup = props => {
             .post('https://opti-ployment.herokuapp.com/api/register', newUser)
             .then(res => {
                 localStorage.setItem('token', res.data.token);
+                props.setLoggedInUser(res.data.user);
                 props.history.push('/dashboard');
             })
             .catch(err => console.log(err));
