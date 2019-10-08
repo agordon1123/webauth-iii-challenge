@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Axios from 'axios';
 
 const Login = props => {
+    console.log(props);
     const initialState = {
         username: "",
         password: ""
@@ -25,8 +26,9 @@ const Login = props => {
             .post('https://opti-ployment.herokuapp.com/api/login', credentials)
             .then(res => {
                 localStorage.setItem('token', res.data.token);
+                console.log(props);
                 props.setLoggedInUser(res.data.user);
-                props.history.push('/dashboard')
+                props.history.push('/dashboard');
                 console.log(res);
             })
             .catch(err => console.log(err));

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Route } from 'react-router-dom';
 import '../styles/App.css';
 
@@ -12,6 +12,7 @@ import PrivateRoute from '../components/PrivateRoute';
 
 const App = () => {
   const [loggedInUser, setLoggedInUser] = useState({});
+  console.log(loggedInUser);
 
   return (
     <div className="App">
@@ -19,7 +20,7 @@ const App = () => {
       <Route exact path='/' render={props => <Landing {...props} />} />
       <Route path='/login' render={props => <Login {...props} setLoggedInUser={setLoggedInUser} />} />
       <Route path='/register' render={props => <Register {...props} setLoggedInUser={setLoggedInUser} />} />
-      <PrivateRoute path='/dashboard' user={loggedInUser} component={Dashboard} />
+      <PrivateRoute path='/dashboard' component={Dashboard} loggedInUser={loggedInUser} />
     </div>
   );
 }

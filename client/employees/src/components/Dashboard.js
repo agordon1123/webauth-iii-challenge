@@ -4,9 +4,9 @@ import { axiosWithAuth } from '../utilities/axiosWithAuth';
 import Friend from './Friend';
 
 const Dashboard = props => {
-    console.log(props);
     const [employees, setEmployees] = useState([]);
     const [activeTab, setActiveTab] = useState({ activeItem: 'News' });
+    console.log(props);
 
     useEffect(() => {
         axiosWithAuth()
