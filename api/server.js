@@ -3,7 +3,7 @@ const helmet = require('helmet');
 const cors = require('cors');
 
 const userRouter = require('../users/users-router');
-// const corsConfig = require('../config/corsConfig');
+const messagesRouter = require('../messages/messages-router');
 
 const server = express();
 
@@ -12,5 +12,6 @@ server.use(helmet());
 server.use(cors());
 
 server.use('/api', userRouter);
+server.use('/api/messages', messagesRouter);
 
 module.exports = server;
