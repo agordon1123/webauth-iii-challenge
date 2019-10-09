@@ -5,9 +5,12 @@ const router = express.Router();
 
 router.get('/:id', (req, res) => {
     const { id } = req.params;
-    
+
     Messages.findByUserId(id)
-        .then(succ => res.status(200).json(succ))
+        .then(succ => {
+            console.log(succ);
+            res.status(200).json(succ);
+        })
         .catch(err => res.status(500).json(err));
 });
 
