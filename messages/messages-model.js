@@ -4,6 +4,7 @@ module.exports = {
     find,
     findBy,
     findById,
+    findByUserId,
     add,
     remove
 };
@@ -16,14 +17,23 @@ function findBy() {
     return 
 };
 
-function findById() {
-    return
+function findById(id) {
+    return db('user_messages')
+        .first()
+        .where({ id });
+};
+
+function findByUserId(id) {
+    return db('user_messages')
+        .first()
+        .where({ user_id: id });
 };
 
 function add(msg) {
-    return db('user_messages').insert(msg);
+    return db('user_messages')
+        .insert(msg);
 };
 
-function remove() {
-
+function remove(id) {
+    return db('')
 };

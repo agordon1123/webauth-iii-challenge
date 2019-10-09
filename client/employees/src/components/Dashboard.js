@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Input, Menu, Container, Header, Message } from 'semantic-ui-react';
 import { axiosWithAuth } from '../utilities/axiosWithAuth';
 import Friend from './Friend';
+import Axios from 'axios';
 
 const Dashboard = props => {
     const [employees, setEmployees] = useState([]);
@@ -12,6 +13,13 @@ const Dashboard = props => {
         axiosWithAuth()
             .get('https://opti-ployment.herokuapp.com/api/users')
             .then(res => setEmployees(res.data))
+            .catch(err => console.log(err));
+    }, []);
+
+    useEffect(() => {
+        Axios
+            .get(`https://opti-ployment.herokuapp.com/api/messages/${props.loggedInUser.id}`)
+            .then(succ => console.log(succ))
             .catch(err => console.log(err));
     }, []);
 
