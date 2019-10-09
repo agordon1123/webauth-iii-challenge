@@ -7,6 +7,8 @@ import Axios from 'axios';
 const Dashboard = props => {
     const [employees, setEmployees] = useState([]);
     const [activeTab, setActiveTab] = useState({ activeItem: 'News' });
+    const [loggedInUser, setLoggedInUser] = useState({});
+    console.log(loggedInUser);
     console.log(props);
 
     useEffect(() => {
@@ -17,11 +19,18 @@ const Dashboard = props => {
     }, []);
 
     useEffect(() => {
-        Axios
-            .get(`https://opti-ployment.herokuapp.com/api/messages/${props.loggedInUser.id}`)
-            .then(succ => console.log(succ))
-            .catch(err => console.log(err));
-    }, []);
+        if (localStorage.getItem('user')) {
+            const user = JSON.parse(localStorage.getItem('user'))
+            setLoggedInUser(user);
+
+            Axios
+                .get(`https://opti-ployment.herokuapp.com/api/messages/${user.id}`)
+                .then(succ => console.log(succ))
+                .catch(err => console.log(err));
+          } else {
+            return null
+          }
+    }, [])
 
     const handleItemClick = (e, { name }) => setActiveTab({ activeItem: name });
     

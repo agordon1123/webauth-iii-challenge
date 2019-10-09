@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Route } from 'react-router-dom';
 import '../styles/App.css';
 
@@ -11,16 +11,13 @@ import Dashboard from './Dashboard';
 import PrivateRoute from '../components/PrivateRoute';
 
 const App = () => {
-  const [loggedInUser, setLoggedInUser] = useState({});
-  console.log(loggedInUser);
-
   return (
     <div className="App">
-      <Route path ='/' render={props => <Nav {...props} setLoggedInUser={setLoggedInUser} />} />
+      <Route path ='/' render={props => <Nav {...props} />} />
       <Route exact path='/' render={props => <Landing {...props} />} />
-      <Route path='/login' render={props => <Login {...props} setLoggedInUser={setLoggedInUser} />} />
-      <Route path='/register' render={props => <Register {...props} setLoggedInUser={setLoggedInUser} />} />
-      <PrivateRoute path='/dashboard' component={Dashboard} loggedInUser={loggedInUser} />
+      <Route path='/login' render={props => <Login {...props} />} />
+      <Route path='/register' render={props => <Register {...props} />} />
+      <PrivateRoute path='/dashboard' component={Dashboard} />
     </div>
   );
 }

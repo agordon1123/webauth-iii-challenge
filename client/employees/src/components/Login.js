@@ -25,11 +25,10 @@ const Login = props => {
         Axios
             .post('https://opti-ployment.herokuapp.com/api/login', credentials)
             .then(res => {
-                localStorage.setItem('token', res.data.token);
-                console.log(props);
-                props.setLoggedInUser(res.data.user);
-                props.history.push('/dashboard');
                 console.log(res);
+                localStorage.setItem('token', res.data.token);
+                localStorage.setItem('user', JSON.stringify(res.data.user));
+                props.history.push('/dashboard');
             })
             .catch(err => console.log(err));
     };

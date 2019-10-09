@@ -24,8 +24,9 @@ const Signup = props => {
         Axios
             .post('https://opti-ployment.herokuapp.com/api/register', newUser)
             .then(res => {
+                console.log(res);
                 localStorage.setItem('token', res.data.token);
-                props.setLoggedInUser(res.data.user);
+                localStorage.setItem('user', JSON.stringify(res.data.user));
                 props.history.push('/dashboard');
             })
             .catch(err => console.log(err));

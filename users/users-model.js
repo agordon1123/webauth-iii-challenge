@@ -20,6 +20,10 @@ function findBy(filter) {
 function add(newUser) {
     return db('users')
         .insert(newUser)
+        .returning('id')
+        .then(id => {
+            return findById(id[0]);
+        });
 };
 
 function findById(id) {
