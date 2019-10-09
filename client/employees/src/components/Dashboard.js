@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Input, Menu, Container, Header, Message } from 'semantic-ui-react';
+import { Input, Menu, Container, Header, Message, Button, Form, TextArea } from 'semantic-ui-react';
 import { axiosWithAuth } from '../utilities/axiosWithAuth';
 import Friend from './Friend';
 import Axios from 'axios';
+import MessageForm from './MessageForm';
 
 const Dashboard = props => {
     const [employees, setEmployees] = useState([]);
     const [activeTab, setActiveTab] = useState({ activeItem: 'News' });
     const [loggedInUser, setLoggedInUser] = useState({});
+    const [drafting, setDrafting] = useState(false);
     console.log(loggedInUser);
     console.log(props);
 
@@ -102,19 +104,24 @@ const Dashboard = props => {
 
             {
                 activeTab.activeItem === 'Messages' ?
-                <Message
-                    style={{maxWidth: '700px', margin: '0 auto'}}
-                    icon='inbox'
-                    header='You have no new messages!'
-                    content='Download our app to stay up-to-date while on-the-go.'
-                />
+                <>
+                    <Button style={{ margin: '20px' }} content='+ New Message' onClick={() => setDrafting(true)} />
+                    {
+                        drafting && 
+                        <MessageForm employees={employees} setDrafting={setDrafting} />
+                    }
+                    <Message
+                        style={{maxWidth: '700px', margin: '0 auto'}}
+                        icon='inbox'
+                        header='You have no new messages!'
+                        content='Download our app to stay up-to-date while on-the-go.'
+                    />
+                </>
                 : null
             }
 
             {
                 activeTab.activeItem === 'Friends' ?
-                // <Header as='h2'>Friends</Header>
-                // &&
                 employees.length && employees.map(el => {
                     return <Friend key={el.id} props={el} employees={employees} />
                 })
